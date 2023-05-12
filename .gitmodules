@@ -49,3 +49,21 @@
 [submodule "pack/plugins/opt/fennel"]
 	path = pack/plugins/opt/fennel
 	url = git@github.com:alexaandru/fennel-nvim.git
+[submodule "pack/plugins/start/gitsigns"]
+	path = pack/plugins/start/gitsigns
+	url = https://github.com/lewis6991/gitsigns.nvim.git
+[submodule "pack/plugins/start/statuscol"]
+	path = pack/plugins/start/statuscol
+	url = https://github.com/luukvbaal/statuscol.nvim.git
+[submodule "pack/plugins/opt/startuptime"]
+	path = pack/plugins/opt/startuptime
+	url = https://github.com/dstein64/vim-startuptime
+[submodule "pack/plugins/start/fzf-lua"]
+	path = pack/plugins/start/fzf-lua
+	url = https://github.com/ibhagwan/fzf-lua.git
+[submodule "pack/plugins/start/d2"]
+	path = pack/plugins/start/d2
+	url = https://github.com/terrastruct/d2-vim
+[submodule "pack/plugins/start/lsp-hints"]
+	path = pack/plugins/start/lsp-hints
+	url = https://github.com/lvimuser/lsp-inlayhints.nvim.git

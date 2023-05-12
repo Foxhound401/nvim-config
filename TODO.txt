@@ -1,17 +1,28 @@
 Watch:
 
-- https://github.com/neovim/neovim/pull/9496 // anticonceal / horizontal virtual text
-- https://github.com/neovim/neovim/issues/9876 // syntax API
-- https://github.com/neovim/neovim/issues/14090 ; for breaking changes
-- https://github.com/neovim/neovim/pull/15723 // semantic tokens
-- https://github.com/neovim/neovim/issues/17153 // ~^^
-- https://github.com/neovim/neovim/pull/9496 // anti-conceal aka Concealn't aka The Unconcealable - stolen from https://www.reddit.com/r/neovim/comments/tg7qpf/virtual_text_inside_buffer_content_related_issues/
-- https://github.com/neovim/neovim/issues/18838
-- https://github.com/neovim/neovim/issues/18393
-- https://github.com/neovim/neovim/issues/17820
-- https://github.com/neovim/neovim/issues/17712
-- https://github.com/neovim/neovim/pull/15436
-- https://github.com/neovim/neovim/issues/9534
-- https://github.com/neovim/neovim/issues/12544
+- https://github.com/neovim/neovim/issues/9876  // syntax API
+- https://github.com/neovim/neovim/issues/18838 // nvim_get_runtime_file is very slow when using a glob with {A,B,C}
+- https://github.com/neovim/neovim/issues/18393 // Lua stdlib feature parity against Vimscript
+- https://github.com/neovim/neovim/issues/17820 // http client for lua
+- https://github.com/neovim/neovim/issues/17712 // LSP: merge results of multiple LSP servers
+- https://github.com/neovim/neovim/pull/15436   // feat(lua): startup profiling
+- https://github.com/neovim/neovim/issues/9534  // API: receive mouse hover events
+- https://github.com/neovim/neovim/issues/12544 // Lua: store metatables on vim.b/vim.w/vim.t scopes
 
 https://www.reddit.com/r/neovim/comments/xft3jw/08_feature_freeze_and_preliminary_release_date/
+
+Make use of semantic tokens
+https://github.com/neovim/neovim/blob/master/src/nvim/highlight_group.c#L267
+https://github.com/neovim/neovim/pull/21100/files
+
+https://git.sr.ht/~xerool/fennel-ls
+
+
+Neovim Conference 2022
+https://www.youtube.com/watch?v=z9SuyhSHOWs
+
+
+Make a plugin to show a diff of current file against its version from another branch (master/main by default)
+see https://neovim.io/doc/user/diff.html
+r !git show master:<some file>
+basename `git symbolic-ref refs/remotes/origin/HEAD`

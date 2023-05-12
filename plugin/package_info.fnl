@@ -32,7 +32,7 @@
   (fn on_stdout [_ data]
     (set json (.. json (table.concat data))))
 
-  (fn on_exit [_ code]
+  (fn on_exit [] ;; job code
     (set vim.b.package_info true)
     (display-info (vim.json.decode json)))
 

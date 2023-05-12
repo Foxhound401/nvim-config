@@ -1,2 +1,2 @@
-set rtp=~/.config/nvim,$VIMRUNTIME
+set rtp=~/.lua,~/.config/nvim,$VIMRUNTIME
 packadd fennel

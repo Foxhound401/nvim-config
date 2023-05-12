@@ -65,7 +65,7 @@
       (set opts (or opts {}))
       (vim.keymap.set mode lhs rhs opts))))
 
-(local config (collect [_ v (ipairs [:treesitter])]
+(local config (collect [_ v (ipairs [:treesitter :statuscol])]
                 v (require (.. :config. v))))
 
 ;; when package name to require .setup() from is different then our config
@@ -85,8 +85,8 @@
  :!builtin #(vim.tbl_map #(tset vim.g (.. :loaded_ $) 1) $)
  : setup
  :r #(require (.. :config. $))
- :sig #(vim.tbl_map #(vim.cmd (.. "sig define " $)) $)
- :colo #(vim.cmd (.. "colo " $))
+ :sig #(vim.tbl_map #(vim.cmd.sign (.. "define " $)) $)
+ :colo #(vim.cmd.colorscheme $)
  : au
  : com
  : opt

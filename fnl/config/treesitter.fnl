@@ -1,7 +1,8 @@
 {:ensure_installed :all
  :sync_install false
  :ignore_install {}
- :highlight {:enable true}
+ :highlight {;; :custom_captures {"@text.danger" :Todo "@text.note" :Todo}
+             :enable true}
  :autotag {:enable true}
  :indent {:enable true}
  :incremental_selection {:enable true

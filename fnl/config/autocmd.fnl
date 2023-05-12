@@ -22,6 +22,7 @@
 ;; [, <buffer_or_pattern>  // buffer (number) or pattern (string), default is "*"
 ;;  [, <desc>]]            // callback description
 [[[:VimEnter :DirChanged] LoadLocalCfg]
+ [:VimEnter :CdProjRoot]
  [[:VimEnter :DirChanged :WinNew :WinEnter] GitStatus]
  [:TextYankPost #(vim.highlight.on_yank {:timeout 450})]
  [:QuickFixCmdPost :cw "[^l]*"]
@@ -31,7 +32,7 @@
  [:FileType :AutoWinHeight :qf]
  [:FileType "setl cul" :qf]
  [:FileType "setl spell spl=en_us" "gitcommit,asciidoc,markdown"]
- [:FileType "setl ts=2 sw=2 sts=2 fdls=0" "lua,vim"]
+ [:FileType "setl ts=2 sw=2 sts=2 fdls=0" "lua,vim,zsh"]
  [:FileType "setl ts=4 sw=4 noet cole=1" :go]
  [:BufEnter :LastWindow]
  [:BufEnter "setl ft=nginx" :nginx/*]

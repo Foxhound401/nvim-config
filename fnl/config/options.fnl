@@ -1,17 +1,21 @@
+
+;; fnlfmt: skip
+(local diffopt [:defaults "algorithm:patience" :indent-heuristic :vertical "linematch:60"])
+
 {:autowriteall true
  :clipboard :unnamedplus
  :cmdheight 1
  :complete [:defaults :kspell]
  :completeopt [:menu :noselect :noinsert]
  :conceallevel 3
- :diffopt [:defaults "algorithm:patience" :indent-heuristic :vertical]
+ : diffopt
  :expandtab true
  :foldexpr "nvim_treesitter#foldexpr()"
  :foldlevel 99
  :foldmethod :expr
  :foldminlines 1
  :foldnestmax 4
- :grepprg "git grep -In"
+ :grepprg "git grep -EIn"
  :icon true
  :iconstring :nvim
  :ignorecase true
@@ -36,8 +40,7 @@
  :titlestring :Neovim
  :updatetime 2000
  :virtualedit [:block :onemore]
- ; <C-Z> == 26
- :wildcharm 26
+ :wildcharm (tonumber (vim.keycode :<C-Z>))
  :wildignore [:*/.git/* :*/node_modules/*]
  :wildignorecase true
  :wildmode "longest:full,full"

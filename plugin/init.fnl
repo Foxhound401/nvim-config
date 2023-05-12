@@ -1,3 +1,5 @@
+(vim.loader.enable)
+
 (local {: !providers : !builtin : setup : r
         : au : lēt : opt : com : map : colo} (require :setup))
 
@@ -11,8 +13,8 @@
 (com (r :commands))
 (map (r :keys))
 
-(setup :lsp :treesitter :pqf ; TODO: lazy load these
-       :dap-go :nvim-dap-virtual-text :dapui)
+; TODO: lazy load these: :dap-go :nvim-dap-virtual-text :dapui
+(setup :treesitter :pqf :gitsigns :statuscol :lsp-inlayhints)
 
-(colo :smurfs)
-
+(colo :challenge)
+;(colo :rose-pine)
