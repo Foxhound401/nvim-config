@@ -51,7 +51,7 @@
       (if rc.documentHighlightProvider (set-highlight))
       (if rc.codeLensProvider
           (au :CodeLens {[:BufEnter :CursorHold :InsertLeave] vim.lsp.codelens.refresh}))
-      (if rc.completionProvider (compl-attach client buffer)))))
+      (if rc.completionProvider (compl-attach client buffer {:trigger_on_delete true})))))
 
 (let [lsp-config (require :lspconfig)]
   (each [name cfg (pairs cfg)]

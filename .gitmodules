@@ -67,3 +67,6 @@
 [submodule "pack/plugins/start/lsp-hints"]
 	path = pack/plugins/start/lsp-hints
 	url = https://github.com/lvimuser/lsp-inlayhints.nvim.git
+[submodule "pack/plugins/start/devicons"]
+	path = pack/plugins/start/devicons
+	url = https://github.com/nvim-tree/nvim-web-devicons.git
