@@ -14,7 +14,7 @@
 (map (r :keys))
 
 ; TODO: lazy load these: :dap-go :nvim-dap-virtual-text :dapui
-(setup :treesitter :pqf :gitsigns :statuscol :lsp-inlayhints)
+(setup :treesitter :pqf :gitsigns :statuscol)
 
 (colo :challenge)
 ;(colo :rose-pine)

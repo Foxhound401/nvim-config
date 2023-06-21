@@ -6,13 +6,12 @@
       ;dapui (require :dapui)
       ;widgets (require :dap.ui.widgets)
       ;sidebar (widgets.sidebar widgets.scopes)
-      hints (require :lsp-inlayhints)]
+      ]
   {:n [[:gb "<Cmd>ls<CR>:b<Space>" S]
        [:db "<Cmd>%bd<bar>e#<CR>" S]
        [:<C-P> :<Cmd>FzFiles<CR> S]
        [:<C-Q> "<Cmd>FzfLua live_grep<CR>" S]
        [:<F5> :<Cmd>Inspect<CR>]
-       [:<C-t> hints.toggle S]
        [:<F3> vim.cmd.only S]
        ;[:<Leader>z dap.continue S]
        ;[:<Leader>b dap.toggle_breakpoint S]

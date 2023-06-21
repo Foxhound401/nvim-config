@@ -29,12 +29,10 @@
                   :CursorMoved vim.lsp.buf.clear_references}))
 
 (local compl-attach (. (require :lsp_compl) :attach))
-(local {:on_attach hints-attach} (require :lsp-inlayhints))
 
 (fn on-attach [args]
   (let [client (vim.lsp.get_client_by_id args.data.client_id)
         buffer args.buf]
-    (hints-attach client buffer)
     ;; https://gist.github.com/swarn/fb37d9eefe1bc616c2a7e476c0bc0316
     ;; https://github.com/golang/tools/blob/master/gopls/doc/semantictokens.md
     ;; https://github.com/golang/vscode-go/issues/2752
@@ -48,10 +46,13 @@
     (let [opts {:silent true : buffer}]
       (each [lhs rhs (pairs lsp-keys)] (vim.keymap.set :n lhs rhs opts)))
     (let [rc client.server_capabilities]
+      (if rc.inlayHintProvider 
+          (vim.lsp.buf.inlay_hint buffer true))
       (if rc.documentHighlightProvider (set-highlight))
       (if rc.codeLensProvider
           (au :CodeLens {[:BufEnter :CursorHold :InsertLeave] vim.lsp.codelens.refresh}))
-      (if rc.completionProvider (compl-attach client buffer {:trigger_on_delete true})))))
+      (if rc.completionProvider
+          (compl-attach client buffer {:trigger_on_delete true})))))
 
 (let [lsp-config (require :lspconfig)]
   (each [name cfg (pairs cfg)]

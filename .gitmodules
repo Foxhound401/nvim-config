@@ -64,9 +64,6 @@
 [submodule "pack/plugins/start/d2"]
 	path = pack/plugins/start/d2
 	url = https://github.com/terrastruct/d2-vim
-[submodule "pack/plugins/start/lsp-hints"]
-	path = pack/plugins/start/lsp-hints
-	url = https://github.com/lvimuser/lsp-inlayhints.nvim.git
 [submodule "pack/plugins/start/devicons"]
 	path = pack/plugins/start/devicons
 	url = https://github.com/nvim-tree/nvim-web-devicons.git

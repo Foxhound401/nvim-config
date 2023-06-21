@@ -25,7 +25,7 @@
  :mousemodel :extend
  :path "**"
  :pumblend 10
- :shell :bash
+ :shell :zsh
  :shortmess :+c
  :showcmd false
  :showmode false
