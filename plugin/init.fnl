@@ -13,7 +13,7 @@
 (com (r :commands))
 (map (r :keys))
 
-(setup :treesitter :pqf :gitsigns :statuscol :github-theme :mini.completion
+(setup :treesitter :pqf :gitsigns :statuscol
        :dap-go :nvim-dap-virtual-text :dapui) ; TODO: lazy load these:
 
 (colo :challenge)
