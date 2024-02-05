@@ -20,10 +20,14 @@
                      lnum (tonumber lnum)
                      col (tonumber col)]
                  {: type : filename : lnum : col : text}))
-          qf (filter qf args.args)]
+          qf (filter qf args.args)
+          tbl-is-not-empty #(not (vim.tbl_isempty $))
+          qf (vim.tbl_filter tbl-is-not-empty qf)]
       (when (> (length qf) 1)
         (vim.fn.setqflist qf :r)
-        (vim.cmd.copen))))
+        (vim.cmd.copen))
+      (if (= (length qf) 0)
+          (print :OK))))
 
   (let [job "golangci-lint run --out-format github-actions"
         opts {: on_exit : on_stdout :on_stderr on_stdout}]

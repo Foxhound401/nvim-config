@@ -29,25 +29,25 @@
   (let [buf (vim.api.nvim_create_buf false true)]
     (fn buf-opts [opts]
       (each [k v (pairs opts)]
-        (vim.api.nvim_buf_set_option buf k v)))
+        (vim.api.nvim_set_option_value k v {: buf})))
 
     (buf-opts {:swapfile false :bufhidden :wipe :filetype :UIInput})
     (vim.api.nvim_buf_set_lines buf 0 -1 true items)
     (buf-opts {: modifiable})
 
-    (let [border ["┏" "━" "┓" "┃" "┛" "━" "┗" "┃"]
+    (let [border :rounded ; ["┏" "━" "┓" "┃" "┛" "━" "┗" "┃"]
           win-open-opts {: width : height :row 1 :col 0
                          :relative :cursor :anchor :NW
                          :style :minimal : border : title :title_pos :center}
           win-set-opts {:winblend 90 :winhighlight "CursorLine:PmenuSel,NormalFloat:Pmenu"
                         :cursorline (not modifiable) :cursorlineopt :both}
-          w (vim.api.nvim_open_win buf true win-open-opts)]
+          win (vim.api.nvim_open_win buf true win-open-opts)]
       (each [k v (pairs win-set-opts)]
-        (vim.api.nvim_win_set_option w k v))
+        (vim.api.nvim_set_option_value k v {: win}))
 
       (fn close []
         (if modifiable (vim.cmd :stopinsert))
-        (vim.api.nvim_win_close w true))
+        (vim.api.nvim_win_close win true))
 
       (values buf close))))
 

@@ -10,17 +10,19 @@
  :conceallevel 3
  : diffopt
  :expandtab true
- :foldexpr "nvim_treesitter#foldexpr()"
- :foldlevel 99
+ :foldexpr "v:lua.vim.treesitter.foldexpr()"
+ :foldtext "v:lua.vim.treesitter.foldtext()"
+ ;:foldlevel 99
  :foldmethod :expr
- :foldminlines 1
- :foldnestmax 4
+ ;:foldminlines 1
+ ;:foldnestmax 4
  :grepprg "git grep -EIn"
  :icon true
  :iconstring :nvim
  :ignorecase true
  :laststatus 0
  :lazyredraw true
+ :modelineexpr true
  :mouse :a
  :mousemodel :extend
  :path "**"
@@ -37,7 +39,7 @@
  :startofline false
  :termguicolors true
  :title true
- :titlestring :Neovim
+ :titlestring "🐙 %{get(w:,'git_status','~git')} 📚 %<%f%M  📦 %{nvim_treesitter#statusline()}"
  :updatetime 2000
  :virtualedit [:block :onemore]
  :wildcharm (tonumber (vim.keycode :<C-Z>))
@@ -45,6 +47,5 @@
  :wildignorecase true
  :wildmode "longest:full,full"
  :wildoptions :pum
- :winbar "🐙 %{get(w:,'git_status','~git')} 📚 %<%f%M  📦 %{nvim_treesitter#statusline()}"
  :wrap false}
 

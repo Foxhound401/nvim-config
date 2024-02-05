@@ -15,6 +15,7 @@
 (local luacheck ;;
        (lint (.. "bash -c 'luacheck --globals vim --formatter plain -- ${INPUT}|"
                  "sed s\"/^/Warn /\"'") ["%tarn %f:%l:%c: %m"]))
+(local actionLint (lint "actionlint --oneline ${INPUT}"))
 (local rootMarkers [:go.mod :package.json :.git])
 (local languages ;;
        {:lua [(fmt "lua-format -i") luacheck]
@@ -22,7 +23,8 @@
         :fennel [(fmt "fnlfmt -" true)]
         :json [(fmt "jq .") (lint "jsonlint ${INPUT}")]
         :javascript [prettier eslint] :typescript [prettier eslint] :vue [prettier eslint]
-        :yaml [prettier] :html [prettier] :scss [prettier] :css [prettier] :markdown [prettier]})
+        ; TODO: limit actionLint only to Github Actions, not all YAMLs!!
+        :yaml [prettier actionLint] :html [prettier] :scss [prettier] :css [prettier] :markdown [prettier]})
 
 {:settings {: languages : rootMarkers :lintDebounce :150ms}
  :filetypes (vim.tbl_keys languages)

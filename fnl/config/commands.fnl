@@ -49,6 +49,12 @@
   (if (and (is-quittable) (last-window))
       (vim.cmd "norm ZQ")))
 
+(fn LspHintsToggle []
+  (when vim.b.hints_on
+    (if (not vim.b.hints) (set vim.b.hints (vim.lsp.inlay_hint.is_enabled)))
+    (set vim.b.hints (not vim.b.hints))
+    (vim.lsp.inlay_hint.enable 0 vim.b.hints)))
+
 ;; Format is: {CommandName CommandSpec, ...}
 ;; where CommandSpec is either String, Table or Lua function.
 ;;
@@ -76,5 +82,6 @@
  :AutoWinHeight "sil exe max([min([line('$')+1, 16]), 1]).'wincmd _'"
  : LspCapabilities
  : PlugUpdate
+ : LspHintsToggle
  :JQ {:cmd "<line1>,<line2>!jq -S ." :range true}}
 

@@ -65,5 +65,6 @@
           :<M-Right> vim.diagnostic.goto_next
           :<M-Left> vim.diagnostic.goto_prev
           :<F7> vim.diagnostic.setloclist
+          :<Leader>D vim.diagnostic.setqflist
           :<Leader>k vim.lsp.codelens.run}}
 

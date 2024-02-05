@@ -28,8 +28,6 @@
   (au :Highlight {[:CursorHold :CursorHoldI] vim.lsp.buf.document_highlight
                   :CursorMoved vim.lsp.buf.clear_references}))
 
-(local compl-attach (. (require :lsp_compl) :attach))
-
 (fn on-attach [args]
   (let [client (vim.lsp.get_client_by_id args.data.client_id)
         buffer args.buf]
@@ -46,19 +44,21 @@
     (let [opts {:silent true : buffer}]
       (each [lhs rhs (pairs lsp-keys)] (vim.keymap.set :n lhs rhs opts)))
     (let [rc client.server_capabilities]
-      (if rc.inlayHintProvider 
-          (vim.lsp.buf.inlay_hint buffer true))
+      (when rc.inlayHintProvider
+        (vim.lsp.inlay_hint.enable buffer true)
+        (set vim.b.hints_on true))
       (if rc.documentHighlightProvider (set-highlight))
       (if rc.codeLensProvider
-          (au :CodeLens {[:BufEnter :CursorHold :InsertLeave] vim.lsp.codelens.refresh}))
-      (if rc.completionProvider
-          (compl-attach client buffer {:trigger_on_delete true})))))
+          (au :CodeLens {[:BufEnter :CursorHold :InsertLeave] vim.lsp.codelens.refresh})))))
 
 (let [lsp-config (require :lspconfig)]
   (each [name cfg (pairs cfg)]
     (let [{: setup} (. lsp-config name)] (setup cfg))))
 
 (vim.diagnostic.config cfg-diag)
+
+(tset vim.lsp.handlers :textDocument/hover
+      (vim.lsp.with vim.lsp.handlers.hover {:border :rounded}))
 
 (let [group (vim.api.nvim_create_augroup :LSP {:clear true})
       au #(vim.api.nvim_create_autocmd :BufWritePre {: group :callback $1 :pattern $2})]

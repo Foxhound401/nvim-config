@@ -16,6 +16,9 @@
     ((require :froggy) (require name)))
   (vim.cmd :redr!))
 
+(fn LspHintsToggle [val]
+  (if vim.b.hints_on (vim.lsp.inlay_hint.enable 0 val)))
+
 ;; Format is: [<item>], where each <item> is itself a list of:
 ;; <event>,                // event type (string or list)
 ;; <command_or_callback>,  // command (string) or callback (function)
@@ -24,6 +27,8 @@
 [[[:VimEnter :DirChanged] LoadLocalCfg]
  [:VimEnter :CdProjRoot]
  [[:VimEnter :DirChanged :WinNew :WinEnter] GitStatus]
+ [:InsertEnter #(LspHintsToggle false)]
+ [:InsertLeave #(LspHintsToggle (not= false vim.b.hints))]
  [:TextYankPost #(vim.highlight.on_yank {:timeout 450})]
  [:QuickFixCmdPost :cw "[^l]*"]
  [:QuickFixCmdPost :lw :l*]

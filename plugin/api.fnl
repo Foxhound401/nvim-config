@@ -37,7 +37,7 @@
       (assert (f:close))
       (when (not vim.g.api)
         (set vim.g.api (vim.api.nvim_create_buf false true))
-        (vim.api.nvim_buf_set_option vim.g.api :filetype :json))
+        (vim.api.nvim_set_option_value :filetype :json {:buf vim.g.api}))
       (let [cmd vim.cmd
             opts [:curl
                   :-H "Content-Type: application/json"

@@ -9,6 +9,10 @@ Watch:
 - https://github.com/neovim/neovim/issues/9534  // API: receive mouse hover events
 - https://github.com/neovim/neovim/issues/12544 // Lua: store metatables on vim.b/vim.w/vim.t scopes
 
+
+Snippets
+https://github.com/neovim/neovim/pull/25301
+
 https://www.reddit.com/r/neovim/comments/xft3jw/08_feature_freeze_and_preliminary_release_date/
 
 Make use of semantic tokens
@@ -26,3 +30,6 @@ Make a plugin to show a diff of current file against its version from another br
 see https://neovim.io/doc/user/diff.html
 r !git show master:<some file>
 basename `git symbolic-ref refs/remotes/origin/HEAD`
+
+
+no. of lines in folds: https://github.com/Wansmer/nvim-config/blob/main/lua/modules/foldtext.lua
