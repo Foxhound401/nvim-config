@@ -10,13 +10,16 @@
  :conceallevel 3
  : diffopt
  :expandtab true
+ :fillchars "fold:─"
  :foldexpr "v:lua.vim.treesitter.foldexpr()"
- :foldtext "v:lua.vim.treesitter.foldtext()"
+ ;:foldtext "v:lua.vim.treesitter.foldtext()"
+ :foldtext ""
  ;:foldlevel 99
  :foldmethod :expr
  ;:foldminlines 1
  ;:foldnestmax 4
  :grepprg "git grep -EIn"
+ :grepformat "%f:%l:%m"
  :icon true
  :iconstring :nvim
  :ignorecase true

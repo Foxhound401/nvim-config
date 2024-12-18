@@ -1,6 +1,6 @@
 {:g {;; FixCursorHold settings
      :cursorhold_updatetime 500
-     :froggy_default_bg nil ;; "#22222C"
+     ;:froggy_default_bg "#230929"
      :netrw {:banner 0
              ;; :he netrw-browser-settings
              :liststyle 0

@@ -2,19 +2,14 @@
 {:cmd [:gopls :-remote=auto]
  :filetypes [:go :gomod :template]
  :settings {:gopls {:vulncheck :Imports
-                    :analyses {:fieldalignment true
-                               :nilness true
-                               :shadow true
-                               :unusedparams true
-                               :unusedwrite true
-                               :useany true
-                               :unusedvariable true}
-                    :buildFlags [:-tags=development]
-                    :directoryFilters nil
+                    :analyses {:shadow true :useany true :unusedvariable true}
+                    :buildFlags [:-tags=test]
+                    :directoryFilters [:-**/node_modules :-**/testdata]
                     :templateExtensions [:tmpl]
                     :codelenses {:gc_details true
                                  :generate true
-                                 :run_vulncheck_exp true
+                                 :run_govulncheck true
+                                 :test true
                                  :tidy true
                                  :upgrade_dependency true
                                  :vendor true}

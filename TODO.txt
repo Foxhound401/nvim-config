@@ -1,3 +1,18 @@
+Plugins:
+https://github.com/nvzone/menu
+https://github.com/jake-stewart/multicursor.nvim
+https://github.com/folke/snacks.nvim
+https://github.com/OXY2DEV/markview.nvim
+https://github.com/folke/which-key.nvim
+https://github.com/nvzone/minty
+https://github.com/NeogitOrg/neogit
+https://github.com/folke/trouble.nvim
+https://github.com/grapp-dev/nui-components.nvim
+https://github.com/nvzone/showkeys
+https://github.com/Saghen/blink.cmp
+
+
+
 Watch:
 
 - https://github.com/neovim/neovim/issues/9876  // syntax API
@@ -8,6 +23,11 @@ Watch:
 - https://github.com/neovim/neovim/pull/15436   // feat(lua): startup profiling
 - https://github.com/neovim/neovim/issues/9534  // API: receive mouse hover events
 - https://github.com/neovim/neovim/issues/12544 // Lua: store metatables on vim.b/vim.w/vim.t scopes
+- https://github.com/neovim/neovim/pull/23029   // vim.iter
+
+
+Enable TS folding selectively:
+https://neovim.discourse.group/t/check-if-treesitter-is-enabled-in-the-current-buffer/902
 
 
 Snippets

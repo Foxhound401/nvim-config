@@ -4,7 +4,7 @@
 (set cfg.__keys nil)
 
 ;; TODO: https://github.com/golang/tools/blob/master/gopls/doc/vim.md#imports
-(fn OrgImports []
+(fn OrgImports_ []
   (let [params (vim.lsp.util.make_range_params)]
     (set params.context {:only [:source.organizeImports]})
     (let [result (vim.lsp.buf_request_sync 0 :textDocument/codeAction params 1000)]
@@ -13,6 +13,11 @@
           (if r.edit
               (vim.lsp.util.apply_workspace_edit r.edit vim.b.offset_encoding)
               (vim.lsp.buf.execute_command r.command)))))))
+
+(fn OrgImports []
+  (vim.lsp.buf.format)
+  (vim.lsp.buf.code_action {:context {:only [:source.organizeImports]} :apply true})
+  (vim.lsp.buf.code_action {:context {:only [:source.fixAll]} :apply true}))
 
 (fn OrgJSImports []
   (vim.lsp.buf.execute_command {:arguments [(vim.fn.expand "%:p")]
@@ -44,12 +49,14 @@
     (let [opts {:silent true : buffer}]
       (each [lhs rhs (pairs lsp-keys)] (vim.keymap.set :n lhs rhs opts)))
     (let [rc client.server_capabilities]
-      (when rc.inlayHintProvider
-        (vim.lsp.inlay_hint.enable buffer true)
-        (set vim.b.hints_on true))
+      ;(when rc.inlayHintProvider
+      ;  (vim.lsp.inlay_hint.enable buffer true)
+      ;  (set vim.b.hints_on true))
       (if rc.documentHighlightProvider (set-highlight))
       (if rc.codeLensProvider
-          (au :CodeLens {[:BufEnter :CursorHold :InsertLeave] vim.lsp.codelens.refresh})))))
+          (au :CodeLens {[:BufEnter :CursorHold :InsertLeave] vim.lsp.codelens.refresh})))
+    ;; callbacks that return a truthy value cause the autocmd to be deleted!!!
+    false))
 
 (let [lsp-config (require :lspconfig)]
   (each [name cfg (pairs cfg)]
@@ -62,7 +69,7 @@
 
 (let [group (vim.api.nvim_create_augroup :LSP {:clear true})
       au #(vim.api.nvim_create_autocmd :BufWritePre {: group :callback $1 :pattern $2})]
-  (au #(vim.lsp.buf.format {:timeout_ms 1000}) "*")
+  (au #(vim.lsp.buf.format {:timeout_ms 5000}) "*")
   (au OrgImports :*.go)
   (au OrgJSImports "*.js,*.jsx"))
 

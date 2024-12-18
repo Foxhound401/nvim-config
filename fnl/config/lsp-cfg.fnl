@@ -29,17 +29,19 @@
                          :includeInlayVariableTypeHints true}]
          (vim.tbl_extend :force noformat
                          {:handlers {:textDocument/publishDiagnostics err-filter}
-                          :settings {:documentFormatting false
+                          :settings {:implicitProjectConfiguration {:checkJs true}
+                                     :documentFormatting false
                                      :typescript {: inlayHints} :javascript {: inlayHints}}})))
 
 (local lsp vim.lsp.buf)
 
 {:bashls {}
+ :ccls {}
  :cssls {}
  :dockerls {}
  :efm (require :config.efm)
  :fennel_ls {}
- :gopls (require :config.gopls)
+ ;:gopls (require :config.gopls)
  :golangci_lint_ls {}
  :html noformat
  :jsonls noformat

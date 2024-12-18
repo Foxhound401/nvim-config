@@ -1,4 +1,10 @@
-{:ensure_installed :all
+{:ensure_installed [:bash :make :toml :json :jq :yaml :diff :dockerfile :dot :sql :csv :ssh_config
+                    :markdown :markdown_inline :vimdoc :comment :printf
+                    :c :cpp :go :gomod :gosum :gotmpl :gowork
+                    :fennel :lua :luadoc :python
+                    :hcl :terraform
+                    :git_config :git_rebase :gitattributes :gitcommit :gitignore
+                    :html :css :javascript :typescript :vue]
  :sync_install false
  :ignore_install {}
  :highlight {;; :custom_captures {"@text.danger" :Todo "@text.note" :Todo}

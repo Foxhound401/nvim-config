@@ -41,6 +41,7 @@
  [:FileType "setl ts=4 sw=4 noet cole=1" :go]
  [:BufEnter :LastWindow]
  [:BufEnter "setl ft=nginx" :nginx/*]
+ [:BufEnter "setl ft=risor" :*.risor]
  [:BufEnter :startinsert :dap-repl]
  [:BufReadPost :JumpToLastLocation]
  [:BufWritePost ReColor :*froggy/*]

@@ -1,5 +1,8 @@
 (vim.loader.enable)
 
+;; Disabling deprecation warnings for now.
+(set vim.deprecate (fn []))
+
 (local {: !providers : !builtin : setup : r
         : au : lēt : opt : com : map : colo} (require :setup))
 
@@ -13,7 +16,7 @@
 (com (r :commands))
 (map (r :keys))
 
-(setup :treesitter :pqf :gitsigns :statuscol
-       :dap-go :nvim-dap-virtual-text :dapui) ; TODO: lazy load these:
+(setup :treesitter :pqf :gitsigns :statuscol)
+       ;:dap-go :nvim-dap-virtual-text :dapui) ; TODO: lazy load these:
 
 (colo :challenge)
